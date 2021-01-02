@@ -3,29 +3,37 @@ import apps
 import os
 import argparse
 
-symlinks = {
+src_dst_sym = {
     "zsh/zshrc.zsh": ".zshrc",
     "git/gitconfig": ".gitconfig",
     "git/gitignore_global": ".gitignore_global",
     "karabiner/karabiner.edn": ".config/karabiner.edn",
-    "Library/Application Support/Code - Insiders/User/keybindings.json": "vscode/keybindings.json",
-    ".ideavimrc": "idea/.vimrc",
-    ".vimrc": "vim/.vimrc"
+    "idea/.vimrc":".ideavimrc",
+    "vim/.vimrc":".vimrc",
+    "vscode/settings.json": "Library/Application Support/Code/User/settings.json"
 }
+
 
 
 def create_symlinks():
     home_dir = os.getenv("HOME")
     dot_dir = os.path.join(home_dir, "dotfiles")
 
-    for src_fname, dst_fname in symlinks.items():
+    for src_fname, dst_fname in src_dst_sym.items():
         src = os.path.join(dot_dir, src_fname)
         dst = os.path.join(home_dir, dst_fname)
-        os.symlink(src, dst)
-        print("created symlink\n\tfrom:%s\n\tto:%s" % (src, dst))
+        if os.path.isfile(dst) is False:
+            f_dir = os.path.join(*os.path.split(dst)[:-1])
+            print(f_dir)
+            os.makedirs(f_dir, exist_ok=True)
+            os.symlink(src, dst)
+            print("created symlink\n\tfrom:'%s'\n\tto:'%s'" % (src, dst))
+        else:
+            print("symlink already exists:\n\t'%s'" % dst)
 
 
 def install_vscode_extensions():
+    """requires VSCode command line tools"""
     for name in apps.vscode_extension:
         os.system("code --install-extension %s" % name)
 
@@ -54,31 +62,31 @@ if __name__ == "__main__":
 
     # (VSCode and Karabiner need to be installed)
     parser.add_argument("--apps", help="opens urls for apps that need manual installation",
-                        aciton="store_true")
-    parser.add_argument("--symlinks", help="symlinks for configs", 
                         action="store_true")
-    parser.add_argument("--brew", help="install brew", 
+    parser.add_argument("--symlinks", help="symlinks for configs",
+                        action="store_true")
+    parser.add_argument("--brew", help="install brew",
                         action="store_true")
     parser.add_argument("--brew-apps", help="install brew apps",
                         action="store_true")
     parser.add_argument("--vscode-ext", help="install vscode extension",
                         action="store_true")
     args = parser.parse_args()
-    
+
     if args.apps:
         open_app_urls()
         res = input("have apps been installed: yes(Y), no(N)")
         if res.lower() not in ['yes', 'y']:
             exit()
-    
+
     if args.symlinks:
         create_symlinks()
-        
+
     if args.brew:
         install_brew()
-    
+
     if args.brew_apps:
         install_brew_apps()
-        
-    if args.vscode_ext():
+
+    if args.vscode_ext:
         install_vscode_extensions()
