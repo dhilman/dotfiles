@@ -1,0 +1,67 @@
+{
+    ;; !  | means mandatory
+    ;; #  | means optional
+    ;; !! | mandatory command + control + optional + shift (hyper)
+    ;; ## | optional any
+
+    ;; to understand better how modifiers work in karabiner
+    ;; karabiner definition of mandatory and optional
+    ;; https://pqrs.org/osx/karabiner/json.html#from-event-definition-modifiers
+
+    ;; C  | left_command
+    ;; T  | left_control
+    ;; O  | left_option
+    ;; S  | left_shift
+    ;; F  | fn
+    ;; Q  | right_command
+    ;; W  | right_control
+    ;; E  | right_option
+    ;; R  | right_shift
+    ;; need to prefix C T O S F with ! or #
+
+ :main [
+    {
+     :des "command mode"
+     :rules [
+          [:right_command ["q-mode" 1] nil {:afterup ["q-mode" 0]}]
+          [:##h :left_arrow ["q-mode" 1]]
+          [:##j :down_arrow ["q-mode" 1]]
+          [:##k :up_arrow ["q-mode" 1]]
+          [:##l :right_arrow ["q-mode" 1]]
+          [:##d :delete_or_backspace ["q-mode" 1]]
+          [:##f :return_or_enter ["q-mode" 1]]
+          [:r :!Treturn_or_enter ["q-mode" 1]] ; openning links in brave
+          [:##a :tab ["q-mode" 1]]
+          [:##s :!Ttab ["q-mode" 1]]
+          [:##semicolon :left_shift ["q-mode" 1]]
+
+          ; switching between instances of the same app
+          [:##grave_accent_and_tilde :left_shift ["q-mode" 1] {:alone :!SCgrave_accent_and_tilde}] 
+          [:##o :left_control ["q-mode" 1]]
+          [:##z :left_control ["q-mode" 1]]
+          [:##x :left_option ["q-mode" 1]]
+          
+          ;; highlight current word
+          [:w [:!Oleft_arrow :!OSright_arrow] ["q-mode" 1]] 
+          
+          ;; highlight current line
+          [:quote [:!Cleft_arrow :!CSright_arrow] ["q-mode" 1]] 
+        ]
+    }
+
+    {
+     :des "capslock to escape"
+     :rules [[:##caps_lock :left_control nil {:alone :escape}]]
+     }
+
+    {
+     :des "semicolon to shift"
+     :rules [[:semicolon :left_shift nil {:alone :semicolon}]]
+    }
+    
+    {
+     :des "` to shift"
+     :rules [[:grave_accent_and_tilde :left_shift nil {:alone :grave_accent_and_tilde}]]
+    }
+  ]
+}
