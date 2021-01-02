@@ -11,3 +11,19 @@ urls = [
     "https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en",
     "https://chrome.google.com/webstore/detail/wikiwand-wikipedia-modern/emffkefkbkpkgpdeeooapgaicgmcbolj",
 ]
+
+vscode_extension = [
+    "vscodevim.vim",
+    "CoenraadS.bracket-pair-colorizer-2",
+    "yzhang.markdown-all-in-one",
+    "christian-kohler.path-intellisense",
+    "johnpapa.vscode-peacock",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker"
+]
+
+brew = [
+    "yqrashawn/goku/goku",
+    "antibody",
+    "tldr"
+]
