@@ -8,8 +8,9 @@ symlinks = {
     "git/gitconfig" : ".gitconfig",
     "git/gitignore_global": ".gitignore_global",
     "karabiner/karabiner.edn": ".config/karabiner.edn",
-    "Library/Application Support/Code - Insiders/User/keybindings.json":
-        "vscode/keybindings.json"
+    "Library/Application Support/Code - Insiders/User/keybindings.json": "vscode/keybindings.json",
+    ".ideavimrc" : "idea/.vimrc",
+    ".vimrc": "vim/.vimrc"
 }
 
 
@@ -28,8 +29,10 @@ def install_vscode_extensions():
     for name in vscode.extensions.names:
         os.system("code --install-extension %s" % name)
 
+
 def install_brew():
     os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"') 
+
 
 def install_brew_apps():
     for name in brew.apps.names:
@@ -39,9 +42,11 @@ def install_brew_apps():
         except Exception:
             os.system("brew install %s" % name)
 
+
 def open_app_urls():
     for url in apps.urls:
         os.system("open %s" % url)
+
 
 if __name__ == "__main__":
     create_symlinks()
