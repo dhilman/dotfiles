@@ -80,8 +80,8 @@ if __name__ == "__main__":
 
     if args.apps:
         open_app_urls()
-        res = input("have apps been installed: yes(Y), no(N)")
-        if res.lower() not in ['yes', 'y']:
+        msg = "yes(Y) apps have been installed to continue: "
+        if input(msg).lower() not in ['yes', 'y']:
             exit()
 
     if args.symlinks:
