@@ -1,12 +1,10 @@
 {
     "window.zoomLevel": 2,
-    "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "Default Light+",
-    
+
     "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
-    
+
     "files.autoSave": "afterDelay",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -24,4 +22,6 @@
         }
     ],
     "vim.useSystemClipboard": true,
+
+    "window.autoDetectColorScheme": true,
 }

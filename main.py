@@ -6,7 +6,7 @@ import argparse
 src_dst_sym = {
     "zsh/zshrc.zsh": ".zshrc",
     "git/gitconfig": ".gitconfig",
-    "git/gitignore_global": ".gitignore_global",
+    "git/gitignore_global": ".gitignore",
     "karabiner/karabiner.edn": ".config/karabiner.edn",
     "idea/.vimrc":".ideavimrc",
     "vim/.vimrc":".vimrc",
@@ -14,22 +14,31 @@ src_dst_sym = {
 }
 
 
+def make_dirs_for_file(fp: str):
+    dir_path = os.path.join(*os.path.split(fp)[:-1])
+    os.makedirs(dir_path, exist_ok=True)
+
 
 def create_symlinks():
     home_dir = os.getenv("HOME")
     dot_dir = os.path.join(home_dir, "dotfiles")
+    cache_dir = os.path.join(home_dir, '.cache')
 
     for src_fname, dst_fname in src_dst_sym.items():
         src = os.path.join(dot_dir, src_fname)
         dst = os.path.join(home_dir, dst_fname)
-        if os.path.isfile(dst) is False:
-            f_dir = os.path.join(*os.path.split(dst)[:-1])
-            print(f_dir)
-            os.makedirs(f_dir, exist_ok=True)
-            os.symlink(src, dst)
-            print("created symlink\n\tfrom:'%s'\n\tto:'%s'" % (src, dst))
-        else:
-            print("symlink already exists:\n\t'%s'" % dst)
+        if os.path.isfile(dst) is True:
+            msg = "File '%s' exists\nYes(y) to overwrite (old moved to %s): " % (dst, cache_dir)
+            if input(msg).lower() not in ['yes', 'y']:
+                print("skipping\n")
+                continue
+            cache = os.path.join(cache_dir, dst_fname)
+            make_dirs_for_file(cache)
+            os.replace(dst, cache)
+
+        make_dirs_for_file(dst)
+        os.symlink(src, dst)
+        print("created symlink\n  from:'%s'\n  to:'%s'\n" % (src, dst))
 
 
 def install_vscode_extensions():
@@ -45,11 +54,7 @@ def install_brew():
 
 def install_brew_apps():
     for name in apps.brew:
-        try:
-            os.system("brew list %s" % name)
-            print("%s already installed" % name)
-        except Exception:
-            os.system("brew install %s" % name)
+        os.system("brew install %s" % name)
 
 
 def open_app_urls():

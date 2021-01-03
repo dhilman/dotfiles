@@ -1,3 +1,6 @@
 [user]
 	name = davidhilman
 	email = dh1416@ic.ac.uk
+
+[core]
+	excludesfile = ~/.gitignore
