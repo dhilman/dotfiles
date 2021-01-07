@@ -1,3 +1,6 @@
+# Private files
+_my_*
+
 # Private test folders (useful for testing code that won't be tracked to keep git diff clean)
 *testp
 

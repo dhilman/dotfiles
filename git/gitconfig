@@ -1,6 +1,10 @@
 [user]
 	name = davidhilman
-	email = dh1416@ic.ac.uk
+	email = david.hilman@acresoftware.com
 
 [core]
 	excludesfile = ~/.gitignore
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
