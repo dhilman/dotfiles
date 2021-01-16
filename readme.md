@@ -4,6 +4,9 @@ Use of `main.py`
    1. for `karabiner` create `Default` profile
 2. Symbolic linking of configurations `--symlinks`
 3. Install brew `--brew`
+    - directory security issue:
+        - `sudo chmod -R 755 /usr/local/share/zsh/site-functions`
+        - `sudo chmod -R 755 /usr/local/share/zsh`
 4. Install brew apps `--brew-apps`
 5. Install VSCode ext `--vscode-ext`
 

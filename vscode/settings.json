@@ -6,8 +6,6 @@
     "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
-
-    "files.autoSave": "afterDelay",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
     "files.eol": "\n",
@@ -24,14 +22,19 @@
         }
     ],
     "vim.useSystemClipboard": true,
-
-    "window.autoDetectColorScheme": true,
     "markdown.extension.syntax.plainTheme": true,
     "editor.lineNumbers": "relative",
     "markdown.extension.list.indentationSize": "inherit",
     "cSpell.userWords": [
         "microservice"
     ],
-    "workbench.colorTheme": "Default Light+",
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
+    "window.autoDetectColorScheme": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "files.autoSave": "onFocusChange",
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
 }

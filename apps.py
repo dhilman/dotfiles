@@ -19,11 +19,13 @@ vscode_extension = [
     "christian-kohler.path-intellisense",
     "johnpapa.vscode-peacock",
     "esbenp.prettier-vscode",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "gruntfuggly.activitusbar"
 ]
 
 brew = [
-    "yqrashawn/goku/goku",
-    "antibody",
-    "tldr"
+    "yqrashawn/goku/goku",  # karabiner configuration
+    "antibody",  # shell pluging installer
+    "tldr",  # shorted description of commands
+    "direnv"  # https://github.com/direnv/direnv (directory specific env)
 ]
