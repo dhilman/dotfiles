@@ -29,7 +29,6 @@
         "microservice"
     ],
     "workbench.activityBar.visible": true,
-    "window.autoDetectColorScheme": true,
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
@@ -37,4 +36,9 @@
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
+    "window.autoDetectColorScheme": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Default Light+",
 }

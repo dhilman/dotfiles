@@ -1,0 +1,30 @@
+<keymap version="1" name="macOS copy" parent="Mac OS X 10.5+">
+  <action id="ChangesView.Move" />
+  <action id="DatabaseView.PropertiesAction" />
+  <action id="ExternalSystem.ProjectRefreshAction" />
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="meta b" />
+    <mouse-shortcut keystroke="meta button1" />
+    <mouse-shortcut keystroke="Force touch" />
+    <mouse-shortcut keystroke="button2" />
+    <keyboard-shortcut first-keystroke="shift meta i" />
+  </action>
+  <action id="IdeaVim.ReloadVimRc.reload" />
+  <action id="MinimizeCurrentWindow" />
+  <action id="PlaybackLastMacro">
+    <keyboard-shortcut first-keystroke="shift meta m" />
+  </action>
+  <action id="QuickJavaDoc">
+    <keyboard-shortcut first-keystroke="f1" />
+    <keyboard-shortcut first-keystroke="ctrl j" />
+    <mouse-shortcut keystroke="control button2" />
+    <keyboard-shortcut first-keystroke="meta i" />
+  </action>
+  <action id="StartStopMacroRecording">
+    <keyboard-shortcut first-keystroke="meta m" />
+  </action>
+  <action id="Vcs.MoveChangedLinesToChangelist" />
+  <action id="VimPluginToggle">
+    <keyboard-shortcut first-keystroke="alt v" />
+  </action>
+</keymap>
